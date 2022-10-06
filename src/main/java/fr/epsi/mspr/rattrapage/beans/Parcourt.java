@@ -4,6 +4,9 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Collection;
+import java.util.LinkedList;
+import java.util.List;
 
 @Data
 @Entity
@@ -24,4 +27,7 @@ public class Parcourt {
 
     @Column(name = "diplome")
     private String diplome;
+
+    /*@OneToMany
+    private List<Rattrapage> liste_rattrapage = new LinkedList<>();*/
 }

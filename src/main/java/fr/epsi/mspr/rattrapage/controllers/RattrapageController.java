@@ -1,11 +1,13 @@
 package fr.epsi.mspr.rattrapage.controllers;
 
+import fr.epsi.mspr.rattrapage.beans.Etudiant;
 import fr.epsi.mspr.rattrapage.beans.Rattrapage;
 import fr.epsi.mspr.rattrapage.service.RattrapageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.LinkedList;
 import java.util.List;
 
 @RestController
@@ -51,4 +53,23 @@ public class RattrapageController {
    {
        return rattrapageService.searchByIdRattrapage(code_rattrapage);
    }
+
+   @GetMapping("/{id_surveillant}/vueSurveillantRattrapage")
+   public List<Rattrapage> vueSurveillantRattrapage(@Validated @PathVariable int id_surveillant)
+   {
+       return rattrapageService.vueSurveillantRattrapage(id_surveillant);
+   }
+
+   @GetMapping("/{id_responsable}/vueResponsableRattrapage")
+   public List<Rattrapage> vueResponsableRattrapage(@Validated @PathVariable int id_responsable)
+   {
+       return rattrapageService.vueResponsableRattrapage(id_responsable);
+   }
+
+   @GetMapping("/{id_intervenant}/vueIntervenantRattrapage")
+   public List<Rattrapage> vueIntervenantRattrapage(@Validated @PathVariable int id_intervenant)
+   {
+       return rattrapageService.vueIntervenantRattrapage(id_intervenant);
+   }
+
 }

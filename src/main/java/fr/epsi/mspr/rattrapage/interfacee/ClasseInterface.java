@@ -2,11 +2,12 @@ package fr.epsi.mspr.rattrapage.interfacee;
 
 import fr.epsi.mspr.rattrapage.beans.Parcourt;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public interface ClasseInterface {
 
-    public List<Parcourt> listeParcourt();
+    public LinkedList<Parcourt> listeParcourt();
 
     public void ajouterParcourt(Parcourt parcourt);
 

@@ -2,9 +2,11 @@ package fr.epsi.mspr.rattrapage.controllers;
 
 import fr.epsi.mspr.rattrapage.beans.Etudiant;
 import fr.epsi.mspr.rattrapage.service.EtudiantService;
+import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.LinkedList;
 import java.util.List;
 
 @RestController
@@ -23,7 +25,7 @@ public class EtudiantController {
         return etudiantService.listeEtudiant();
     }
 
-    @PostMapping("ajouter")
+    @PostMapping("/ajouter")
     public String ajouterEtudiant(@Validated @RequestBody Etudiant etudiant)
     {
         etudiantService.ajouterEtudiant(etudiant);
@@ -43,4 +45,35 @@ public class EtudiantController {
         etudiantService.dropEtudiant(id_etudiant);
         return "Suppression effectuer avec succes";
     }
+
+    @GetMapping("/{id_etudiant}/searchById")
+    public Etudiant searchByIdEtudiant(@Validated @PathVariable int id_etudiant)
+    {
+        return etudiantService.searchByIdEtudiant(id_etudiant);
+    }
+
+    public String listeHomeEtudiant(Model model)
+    {
+        List<Etudiant> liste_etudiant = new LinkedList<>();
+
+        List<Etudiant> liste = etudiantService.listeEtudiant();
+
+        for (int i = 0; i< liste.size(); i++)
+        {
+            liste_etudiant.add(liste.get(i));
+        }
+
+        model.addAttribute("liste_etudiant", liste_etudiant);
+
+        return "listeHomeEtudiant";
+
+    }
+
+    @GetMapping("/home")
+    public String home()
+    {
+        return "login";
+    }
+
+
 }

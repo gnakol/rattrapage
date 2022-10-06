@@ -13,10 +13,6 @@ public class RattrapageApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(RattrapageApplication.class, args);
-
-
 	}
-
-
 
 }

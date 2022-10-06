@@ -5,6 +5,9 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Collection;
+import java.util.LinkedList;
+import java.util.List;
 
 @Data
 @Entity
@@ -37,5 +40,6 @@ public class Surveillant{
 
     @Column(name = "adresse")
     private String adresse;
+
 
 }

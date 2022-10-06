@@ -18,4 +18,5 @@ public class Matiere {
 
     @Column(name="credit")
     private String credit;
+
 }

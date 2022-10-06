@@ -49,8 +49,24 @@ public class EtudiantService implements EtudiantInterface {
     @Override
     public void dropEtudiant(int id_etudiant) {
 
-        Etudiant etudiant = etudiantRepository.findById(id_etudiant).orElseThrow(() -> new RuntimeException("etudiant non trouver"));
-        if(etudiant != null)
-            etudiantRepository.delete(etudiant);
+        Etudiant etudiant = etudiantRepository.findById(id_etudiant).get();
+        try
+        {
+            if(etudiant != null)
+                etudiantRepository.delete(etudiant);
+        }
+        catch (Exception e)
+        {
+            System.out.println("Attention cet id n'existe pas");
+        }
+
+
+    }
+
+    @Override
+    public Etudiant searchByIdEtudiant(int id_etudiant) {
+
+        Etudiant etudiant = etudiantRepository.findById(id_etudiant).orElseThrow(() -> new RuntimeException("non trouver"));
+        return etudiant;
     }
 }

@@ -2,9 +2,11 @@ package fr.epsi.mspr.rattrapage.controllers;
 
 import fr.epsi.mspr.rattrapage.beans.Parcourt;
 import fr.epsi.mspr.rattrapage.service.ClasseService;
+import net.bytebuddy.dynamic.scaffold.MethodGraph;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.LinkedList;
 import java.util.List;
 
 @RestController
@@ -18,8 +20,10 @@ public class ClasseController {
     }
 
     @GetMapping("/liste")
-    public List<Parcourt> listeClasse()
+    public LinkedList<Parcourt> listeClasse()
     {
+        System.out.println("*********************le comportement de la liste chez le controlleur******************");
+        System.out.println(classeService.listeParcourt());
         return classeService.listeParcourt();
     }
 
@@ -49,4 +53,6 @@ public class ClasseController {
     {
         return classeService.searchByIdParcourt(code_classe);
     }
+
+
 }

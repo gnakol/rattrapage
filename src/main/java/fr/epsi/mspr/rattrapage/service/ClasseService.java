@@ -6,6 +6,7 @@ import fr.epsi.mspr.rattrapage.repository.ClasseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.LinkedList;
 import java.util.List;
 
 @Service
@@ -19,8 +20,18 @@ public class ClasseService implements ClasseInterface {
     }
 
     @Override
-    public List<Parcourt> listeParcourt() {
-        return classeRepository.findAll();
+    public LinkedList<Parcourt> listeParcourt() {
+        List<Parcourt> tmp_liste = classeRepository.findAll();
+        LinkedList<Parcourt> liste_parcour = new LinkedList<>();
+
+        List<Parcourt> tmp = classeRepository.findAll();
+
+        for(int i = 0; i < tmp.size(); i++)
+        {
+            liste_parcour.add(tmp.get(i));
+        }
+
+        return  liste_parcour;
     }
 
     @Override

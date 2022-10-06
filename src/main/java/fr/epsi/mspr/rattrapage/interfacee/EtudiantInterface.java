@@ -10,4 +10,7 @@ public interface EtudiantInterface {
     public void ajouterEtudiant(Etudiant etudiant);
     public Etudiant updateEtudiant(int id, Etudiant etudiant);
     public void dropEtudiant(int id_etudiant);
+
+    public Etudiant searchByIdEtudiant(int id_etudiant);
+
 }

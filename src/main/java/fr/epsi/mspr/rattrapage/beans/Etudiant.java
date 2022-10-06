@@ -1,8 +1,12 @@
 package fr.epsi.mspr.rattrapage.beans;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.LinkedList;
+import java.util.List;
 
 @Data
 @Entity
@@ -30,4 +34,14 @@ public class Etudiant {
 
     @Column(name = "sexe")
     private String sexe;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Rattrapage> liste_rattrapage = new LinkedList<>();
+
+    @OneToMany(cascade = CascadeType.MERGE)
+    @JsonIgnore
+    private List<DetailRattrapage> liste_detail;
+
+
+
 }
